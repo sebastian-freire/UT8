@@ -1,9 +1,8 @@
 package com.mycompany.mavenproject1;
 import java.util.Collection;
-
 import java.util.LinkedList;
 
-public class TAristas extends LinkedList<TArista> {
+public class TAristas extends LinkedList<IArista> {
 
     private final static String SEPARADOR_ELEMENTOS_IMPRESOS = "-";
     //private Collection<TArista> aristas  = new LinkedList<TArista>();
@@ -16,9 +15,8 @@ public class TAristas extends LinkedList<TArista> {
      * @param etDestino
      * @return
      */
-    public TArista buscar(Comparable etOrigen, Comparable etDestino) {
-        TArista tempArista;
-        for (TArista laa : this) {
+    public IArista buscar(Comparable etOrigen, Comparable etDestino) {
+        for (IArista laa : this) {
             if ((laa.getEtiquetaOrigen().equals(etOrigen)) && laa.getEtiquetaDestino().equals(etDestino)) {
                 return laa;
             }
@@ -35,9 +33,9 @@ public class TAristas extends LinkedList<TArista> {
      * @param VerticesV - Lista de vertices V
      * @return
      */
-    public TArista buscarMin(Collection<Comparable> VerticesU, Collection<Comparable> VerticesV) {
-        TArista tempArista;
-        TArista tAMin = null;
+    public IArista buscarMin(Collection<Comparable> VerticesU, Collection<Comparable> VerticesV) {
+        IArista tempArista;
+        IArista tAMin = null;
         Double costoMin = Double.POSITIVE_INFINITY;
 
         for (Comparable u : VerticesU) {
@@ -73,9 +71,8 @@ public class TAristas extends LinkedList<TArista> {
         return salida.toString();
     }
 
-    void insertarAmbosSentidos(Collection<TArista> aristas) {
-        TArista tempArista;
-        for (TArista ta : aristas) {
+    void insertarAmbosSentidos(Collection<IArista> aristas) {
+        for (IArista ta : aristas) {
             this.add(ta);
             this.add(ta.aristaInversa());
         }

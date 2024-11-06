@@ -44,5 +44,10 @@ public class TArista implements IArista {
         this.costo = costo;
     }
 
+    @Override
+    public IArista aristaInversa() {
+        return new TArista(this.etiquetaDestino, this.etiquetaOrigen, this.getCosto());
+    }
+
     
 }

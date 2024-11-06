@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import uy.edu.ucu.aed.utils.ManejadorArchivosGenerico;
+import com.mycompany.mavenproject1.ManejadorArchivosGenerico;
 
 public class UtilGrafos {
 

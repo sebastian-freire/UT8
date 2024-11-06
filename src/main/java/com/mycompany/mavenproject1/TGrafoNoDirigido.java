@@ -1,9 +1,8 @@
 package com.mycompany.mavenproject1;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
+import java.util.Map;
 
 public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido {
     protected TAristas lasAristas = new TAristas();
@@ -33,8 +32,30 @@ public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido
 
     @Override
     public TGrafoNoDirigido Prim() {
-        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-                                                                       // Tools | Templates.
+    ArrayList aristasTotal = new ArrayList();
+    ArrayList verticesV = new ArrayList();
+    ArrayList verticesU = new ArrayList();
+    int costoPrim = 0;
+
+    Map<Comparable, IVertice> verticesMap = this.getVertices();
+
+    for (Map.Entry<Comparable, IVertice> entry : verticesMap.entrySet()) {
+        IVertice vertice = entry.getValue();
+        verticesV.add(vertice.getEtiqueta());
+    }
+
+    verticesU.add(this.getVertices().get(0).getEtiqueta());
+
+    while (verticesV != null) {
+        IArista aristaMin = this.getLasAristas().buscarMin(verticesU, verticesV);
+        aristasTotal.add(aristaMin);
+        verticesV.remove(aristaMin.getEtiquetaDestino());
+        verticesU.add(aristaMin.getEtiquetaDestino());
+        costoPrim += aristaMin.getCosto();
+    }
+
+    return new TGrafoNoDirigido(verticesU, aristasTotal);
+    
     }
 
     @Override

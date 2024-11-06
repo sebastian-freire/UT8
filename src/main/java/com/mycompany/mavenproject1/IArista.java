@@ -24,4 +24,5 @@ public interface IArista {
 
     void setEtiquetaOrigen(Comparable etiquetaOrigen);
     
+    IArista aristaInversa();
 }
