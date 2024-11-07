@@ -163,4 +163,23 @@ public class TVertice<T> implements IVertice {
 
     }
 
+    @Override
+    public void bea(Collection<TVertice> visitados) {
+        this.visitado = true;
+        LinkedList<TVertice> lista = new LinkedList();
+        lista.add(this);
+        visitados.add(this);
+        while (!lista.isEmpty()) {
+            TVertice primero = lista.remove(0);
+            LinkedList<TAdyacencia> ady = primero.getAdyacentes();
+            for (TAdyacencia t : ady) {
+                if (!t.getDestino().getVisitado()) {
+                    t.getDestino().setVisitado(true);
+                    lista.add((TVertice) t.getDestino());
+                    visitados.add((TVertice) t.getDestino());
+                }
+            }
+        }
+    }
+
 }

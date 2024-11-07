@@ -41,4 +41,6 @@ public interface IVertice {
 
     public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCaminos todosLosCaminos);
 
+    public void bea(Collection<TVertice> visitados);
+
 }

@@ -2,6 +2,7 @@ package com.mycompany.mavenproject1;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido {
@@ -77,12 +78,22 @@ public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido
 
     @Override
     public Collection<TVertice> bea(Comparable etiquetaOrigen) {
-        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-                                                                       // Tools | Templates.
+        if (this.getVertices().isEmpty()) {
+            return null;
+        } else {
+            this.desvisitarVertices();
+            if (this.existeVertice(etiquetaOrigen)) {
+                IVertice vert = buscarVertice(etiquetaOrigen);
+                Collection<TVertice> verts = new LinkedList<TVertice>();
+                vert.bea(verts);
+                return verts;
+            }
+            return null;
+        }
     }
 
     @Override
     public Collection<TVertice> bea() {
-
+        return null;
     }
 }

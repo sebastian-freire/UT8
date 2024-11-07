@@ -75,7 +75,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
      * @param unaEtiqueta Etiqueta del vertice a buscar.-
      * @return El vertice encontrado. En caso de no existir, retorna nulo.
      */
-    private IVertice buscarVertice(Comparable unaEtiqueta) {
+    public IVertice buscarVertice(Comparable unaEtiqueta) {
         return getVertices().get(unaEtiqueta);
     }
 
